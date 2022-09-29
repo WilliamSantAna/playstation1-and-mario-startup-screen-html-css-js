@@ -24,7 +24,12 @@ const marioJumpToB3 = () => {
     const t = 500;
     mario.style.backgroundPosition = jumpSprite;
     mario.style.animation = 'mario-jump-to-b3-animation ' + t + 'ms linear forwards';
-    window.setTimeout(() => { document.getElementById('b3').classList.add('fechado'); }, t/2);
+    
+    window.setTimeout(() => { 
+        document.getElementById('b3').classList.add('fechado'); 
+        document.getElementById('escada').style.animation = 'escada-animation 2s linear forwards';
+    }, t/2);
+    
     window.setTimeout(() => { mario.style.backgroundPosition = standSprite; }, t + 10);
     window.setTimeout(jumpToB3Up, t + 500);
 };

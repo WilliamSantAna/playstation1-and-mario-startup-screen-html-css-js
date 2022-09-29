@@ -72,20 +72,23 @@ const loadScreen = (url, callback) => {
 	xhttp.onload = () => { 
         callback(xhttp.responseText); 
     };
-	xhttp.open("GET", url, true);
+    const time = (new Date()).getTime();
+	xhttp.open("GET", url + '?' + time, true);
 	xhttp.send();
 };
 
 const addCssToPage = (url) => {
     let css = document.createElement('link');
-    css.href = url;
+    const time = (new Date()).getTime();
+    css.href = url + '?' + time;
     css.rel = 'stylesheet';
     document.getElementById('head').appendChild(css);
 };
 
 const addJsToPage = (url) => {
     let script = document.createElement('script');
-    script.src = url;
+    const time = (new Date()).getTime();
+    script.src = url + '?' + time;
     document.getElementById('head').appendChild(script);
 }
 

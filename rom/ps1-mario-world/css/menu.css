@@ -85,6 +85,10 @@
     from { opacity: 0; } to { opacity: 1; }
 }
 
+@keyframes escada-animation {
+    from { height: 0px; } to {height: 500px; }
+}
+
 #menu {
     background: linear-gradient(to bottom, rgb(144 205 255), rgb(232 245 255));
     font-size: 50pt; 
@@ -517,3 +521,47 @@ div#mario {
     box-sizing: border-box;
     display: none;
 }
+
+#escada {
+    position: absolute;
+    bottom: 438px;
+    left: 231px;
+    width: 38px;
+    height: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    overflow: hidden;
+}
+
+#escada .degrau {
+    height: 50px;
+    width: 38px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#escada .degrau .folha-esquerda, #escada .degrau .folha-direita {
+    width: 16px;
+    height: 8px;
+    background-color: #00b500;
+    border-radius: 50%;
+    position: relative;
+    border: solid 2px black;
+}
+
+#escada .degrau .folha-esquerda { top: -7px; }
+#escada .degrau .folha-direita { top: 7px; }
+
+#escada .degrau .haste {
+    width: 5px;
+    height: 50px;
+    background-color: #00a900;
+    border-left: solid 2px black;
+    border-right: solid 2px black;
+}
+
+

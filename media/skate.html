@@ -1,0 +1,156 @@
+<style>
+    body { margin: 0; border: 0; padding: 0; box-sizing: border-box; display: inline-flex; }
+    #skate-front {
+        position: absolute;
+        width: 200px;
+        height: 600px;
+        left: 100px;
+        top: 100px;
+        z-index: 1;
+        transform: rotate(22deg) rotateY(0deg);
+    }
+
+    #skate-front #nose {
+        background-color: black;
+        position: absolute;
+        width: 200px;
+        height: 300px;
+        border-radius: 30% 30% 0 0;
+    }
+
+    #skate-front #tail {
+        background-color: black;
+        position: absolute;
+        top: 300px;
+        width: 200px;
+        height: 300px;
+        border-radius: 0 0 30% 30%;
+    }
+
+
+    #skate-back {
+        position: absolute;
+        width: 200px;
+        height: 600px;
+        left: 100px;
+        top: 100px;
+        z-index: 0;
+        transform: rotate(22deg) rotateY(0deg);
+    }
+
+    #skate-back #nose {
+        background-color: rgb(170, 38, 38);
+        position: absolute;
+        width: 200px;
+        height: 300px;
+        border-radius: 30% 30% 0 0;
+    }
+
+    #skate-back #tail {
+        background-color: rgb(103, 197, 145);
+        position: absolute;
+        top: 300px;
+        width: 200px;
+        height: 300px;
+        border-radius: 0 0 30% 30%;
+    }
+
+    #skate-back #nose #truck-nose {
+        width: 130px;
+        height: 29px;
+        background: gray;
+        position: absolute;
+        top: 120px;
+        left: 33px;        
+    }
+
+    #skate-back #nose #rodinha1-nose {
+        width: 30px;
+        height: 45px;
+        background: #222;
+        position: absolute;
+        top: 114px;
+        left: 27;
+        border-radius: 10px;
+    }
+
+    #skate-back #nose #rodinha2-nose {
+        width: 30px;
+        height: 45px;
+        background: #222;
+        position: absolute;
+        top: 114px;
+        left: 142px;
+        border-radius: 10px;
+    }
+
+    #skate-back #tail #truck-tail {
+        width: 130px;
+        height: 29px;
+        background: gray;
+        position: absolute;
+        top: 149px;
+        left: 33px;        
+    }
+
+    #skate-back #tail #rodinha1-tail {
+        width: 30px;
+        height: 45px;
+        background: #222;
+        position: absolute;
+        top: 142px;
+        left: 27;
+        border-radius: 10px;
+    }
+
+    #skate-back #tail #rodinha2-tail {
+        width: 30px;
+        height: 45px;
+        background: #222;
+        position: absolute;
+        top: 142px;
+        left: 142px;
+        border-radius: 10px;
+    }
+
+
+</style>
+
+<script>
+    var rotateY = 0;
+    const kickFlip = (e) => {
+        window.setInterval(() => {
+            document.querySelector('#skate-front').style.transform = 'rotate(22deg) rotateY(' + rotateY + 'deg)';
+            document.querySelector('#skate-back').style.transform = 'rotate(22deg) rotateY(' + rotateY + 'deg)';
+            if (rotateY == 360) rotateY = 0;
+            if (rotateY == 0 || rotateY == 270) {
+                document.querySelector('#skate-front').style.display = 'inherit';
+                document.querySelector('#skate-back').style.display = 'none';
+            }
+            if (rotateY == 90) {
+                document.querySelector('#skate-front').style.display = 'none';
+                document.querySelector('#skate-back').style.display = 'inherit';
+            }
+            rotateY+=2;
+        }, 10);
+    }
+    document.addEventListener("DOMContentLoaded", kickFlip);
+
+</script>
+
+<div id="skate-front">
+    <div id="nose"></div>
+    <div id="tail"></div>
+</div>
+<div id="skate-back">
+    <div id="nose">
+        <div id="truck-nose"></div>
+        <div id="rodinha1-nose"></div>
+        <div id="rodinha2-nose"></div>
+</div>
+    <div id="tail">
+        <div id="truck-tail"></div>
+        <div id="rodinha1-tail"></div>
+        <div id="rodinha2-tail"></div>
+</div>
+</div>

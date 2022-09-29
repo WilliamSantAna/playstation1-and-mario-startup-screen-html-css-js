@@ -1,0 +1,343 @@
+/* Reset do css */
+html, body { margin: 0; padding: 0; border: 0; display: grid; height: 100vh; width: 100vw; justify-content: center; align-items: center; background-color: gray; }
+
+#audio-opening { 
+    display: none; 
+}
+
+div#tv {
+    width: 1024px;
+    height: 768px;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+}
+
+div#tv > div {
+    border-radius: 20px;
+    border: solid 3px #222;
+    width: inherit;
+    height: inherit;
+    justify-content: center;
+}
+
+#tela {
+    background-color: black;
+}
+
+/* =================================================================*/
+/*                  BLOCO DE CRIACAO DOS EFEITOS                    */
+/* =================================================================*/
+
+/* Efeito do quadradinho menor da esquerda, para deslizar pra cima */
+@keyframes tela-branca-quadrado-esquerda-deslizar-pra-cima {
+    from { top: 50%; }
+    to { top: 10%; }
+}
+
+/* Efeito do quadradinho menor da direita, para deslizar pra baixo */
+@keyframes tela-branca-quadrado-direita-deslizar-pra-baixo {
+    from { top: 10%; }
+    to { top: 50%; }
+}
+
+@keyframes tela-branca-transicao-para-tela-preta {
+    from { background-color: #fff; }
+    to { background-color: #000; }
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* =================================================================*/
+/*        BLOCO DE CRIACAO DA PRIMEIRA TELA (BRANCA)                */
+/* =================================================================*/
+
+#tela-branca { 
+    background-color: #fff;
+    display: none;
+}
+
+#tela-branca #quadrado-maior {
+    transform: rotateY(0deg) rotate(45deg);
+    background-image: linear-gradient(45deg, #D93816, #F1DC0C, #D93816);
+    width: 300px;
+    height: 300px;
+    display: inline-flex;
+}
+
+/* Design do quadradinho menor da esquerda */
+#tela-branca #quadrado-menor-esquerda {
+    background-image: linear-gradient(45deg, #D93816, transparent, transparent); /* gradiente das cores, começa laranja e vai ficando transparente */
+    width: 120px; /* 150px de altura */
+    height: 120px; /* 150px de largura */
+    position: relative; /* o quadradinho nasce com a posicao relativa ao quadrado maior (que é o pai dele) */
+    top: 50%; /* o quadradinho nasce a 40% da borda do quadrado maior */
+    left: 10%; /* o quadradinho nasce a 10% da borda do quadrado maior */
+    /* animation-name: tela-branca-quadrado-esquerda-deslizar-pra-cima; /* nome da animacao criada no keyframes */
+    animation-duration: 3s; /* Tempo que vai levar pro quadradinho ir pra cima */
+    animation-delay: 1s;
+    animation-fill-mode: forwards; /* Faz a animacao permanecer no mesmo lugar quando ela terminar */
+}
+
+/* Design do quadradinho menor da direita */
+#tela-branca #quadrado-menor-direita {
+    background-image: linear-gradient(45deg, transparent, transparent, #D93816); /* gradiente das cores, começa laranja e vai ficando transparente */
+    width: 120px; /* 150px de altura */
+    height: 120px; /* 150px de largura */
+    position: relative; /* o quadradinho nasce com a posicao relativa ao quadrado maior (que é o pai dele) */
+    top: 10%; /* o quadradinho nasce a 40% da borda do quadrado maior */
+    left: 10%; /* o quadradinho nasce a 10% da borda do quadrado maior */
+    /* animation-name: tela-branca-quadrado-direita-deslizar-pra-baixo; /* nome da animacao criada no keyframes */
+    animation-duration: 3s; /* Tempo que vai levar pro quadradinho ir pra cima */
+    animation-delay: 1s;
+    animation-fill-mode: forwards; /* Faz a animacao permanecer no mesmo lugar quando ela terminar */
+}
+
+#tela-branca #texto-sony {
+    font-family: serif; /* Fonte serif */
+    font-size: 7em; /* Tamanho de 7 */
+    text-transform: uppercase; /* Coloca a fonte em maiusculo */
+    text-align: center; /* Centraliza o texto dentro da div */
+    color: #013896; /* Cor azul */
+    transform: translate(0px, 0px) scale(1.4, 0.6); /* Achata a fonte, pra imitar a resolucao baixa das TV antigas */
+}
+
+#tela-branca #computer-entertainment {
+    text-align: center;
+    display: flow-root;
+    text-transform: uppercase;
+    color: #013896;
+    font-family: sans-serif;
+}
+
+#tela-branca #computer-entertainment div:nth-child(1) {
+    font-size: 3.5em;    
+}
+
+#tela-branca #computer-entertainment div:nth-child(2) {
+    font-size: 2em;
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+}
+
+#tela-branca #computer-entertainment div:nth-child(2) div {
+    font-size: 0.7em;
+}
+
+
+/* =================================================================*/
+/*        BLOCO DE CRIACAO DA SEGUNDA TELA (PRETA)                  */
+/* =================================================================*/
+
+
+
+#tela-preta {
+    display: none; 
+    background-color: #fff;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+#tela-preta #logo-ps1 {    
+    width: 600px;
+    height: 400px;
+    position: relative;
+    display: flex;
+    margin-top: 50px;
+}
+
+#tela-preta #logo-ps1 #logo-ps1-amarelo-curva {
+    width: 138px;
+    height: 34px;
+    top: 310px;
+    background-color: #F3C202;
+    position: absolute;
+    transform: skew(-66deg, 16deg);
+    left: 111px;
+    border-end-start-radius: 184%;
+    border-end-end-radius: 260%;
+}
+
+#tela-preta #logo-ps1 #logo-ps1-vermelho-barra {
+    width: 75px;
+    height: 358px;
+    background-color: #DE0029;
+    z-index: 1;
+    position: absolute;
+    left: 260px;
+    top: 20px;
+    transform: skew(0deg, 16deg);   
+}
+
+#tela-preta #logo-ps1 #logo-ps1-vermelho-curva {
+    width: 130px;
+    height: 170px;
+    background-color: #DE0029;
+    z-index: 1;
+    position: absolute;
+    left: 335px;
+    top: 50px;
+    transform: skew(0deg, 16deg);
+    border-start-end-radius: 50%;
+    border-end-end-radius: 50%;
+}
+
+#tela-preta #logo-ps1 #logo-ps1-preto-barra {
+    width: 34px;
+    height: 140px;
+    background: black;
+    position: absolute;
+    top: 102px;
+    left: 335px;
+    z-index: 2;
+    transform: skew(0deg, 16deg);
+}
+
+#tela-preta #logo-ps1 #logo-ps1-preto-bolinha {
+    width: 34px;
+    height: 34px;
+    background: black;
+    position: absolute;
+    top: 83px;
+    left: 335px;
+    z-index: 2;
+    transform: skew(0deg, 16deg);
+    border-radius: 50%;
+}
+
+#tela-preta #logo-ps1 #logo-ps1-verde-barra {
+    background-color: #00AA9E;
+    width: 247px;
+    height: 42px;
+    position: absolute;
+    top: 285px;
+    left: 192px;
+    z-index: 0;
+    transform: skew(-66deg, 16deg);
+}
+
+#tela-preta #logo-ps1 #logo-ps1-amarelo-triangulo {
+    width: 57px;
+    height: 25px;
+    background-color: #F3C202;
+    position: absolute;
+    transform: skew(-66deg, 16deg);
+    top: 354px;
+    left: 307px;
+}
+
+#tela-preta #logo-ps1 #logo-ps1-azul-barra {
+    background-color: #326DB3;
+    width: 168px;
+    height: 34px;
+    position: absolute;
+    top: 263px;
+    left: 355px;
+    z-index: 0;
+    transform: skew(-66deg, 16deg);
+    border-start-end-radius: 50%;
+    border-start-start-radius: 50%;
+}
+
+#tela-preta #logo-ps1 #logo-ps1-azul-triangulo {
+    width: 29px;
+    height: 25px;
+    background-color: #326DB3;
+    position: absolute;
+    transform: skew(-66deg, 16deg);
+    top: 229px;
+    left: 266px;
+}
+
+#tela-preta #logo-ps1 #logo-ps1-branco-barra-1 {
+    width: 42px;
+    height: 41px;
+    background-color: #000;
+    position: absolute;
+    transform: skew(-66deg, 16deg);
+    top: 268px;
+    left: 230px;
+}
+
+#tela-preta #logo-ps1 #logo-ps1-branco-bolinha-1 {
+    width: 41px;
+    height: 20px;
+    background-color: #000;
+    position: absolute;
+    transform: skew(-66deg, 16deg);
+    top: 303px;
+    left: 175px;
+    border-end-start-radius: 50%;
+    border-end-end-radius: 50%;
+}
+
+#tela-preta #logo-ps1 #logo-ps1-branco-barra-2 {
+    width: 41px;
+    height: 39px;
+    background-color: #000;
+    position: absolute;
+    transform: skew(-66deg, 16deg);
+    top: 298px;
+    left: 334px;
+}
+
+#tela-preta #logo-ps1 #logo-ps1-branco-bolinha-2 {
+    width: 41px;
+    height: 20px;
+    background-color: #000;
+    position: absolute;
+    transform: skew(-66deg, 16deg);
+    top: 281px;
+    left: 393px;
+    border-start-end-radius: 50%;
+    border-start-start-radius: 50%;
+}
+
+#tela-preta div#play-station-brand {
+    color: #fff;
+    text-align: center;
+    font-size: 3em;
+    display: inline-flex;
+    align-items: baseline;
+    justify-content: center;
+    transform: translate(0px, 0px) scale(1.5, 1);
+    font-family: monospace;
+    opacity: 0;
+}
+
+#tela-preta div#play-station-brand div {
+    font-size: 1rem;
+}
+
+#tela-preta div#license {
+    color: #fff;
+    text-align: center;
+    font-size: 1.5em;
+    display: inline-flex;
+    align-items: baseline;
+    justify-content: center;
+    font-family: monospace;    
+}
+
+#tela-preta div#scea {
+    color: #fff;
+    text-align: center;
+    font-size: 1.5em;
+    display: inline-flex;
+    align-items: baseline;
+    justify-content: center;
+    font-family: monospace;    
+}
+
+#tela-preta div#scea div {
+    font-size: 1rem;
+}
+
+div#game {
+    display: none;
+    overflow: hidden; 
+}

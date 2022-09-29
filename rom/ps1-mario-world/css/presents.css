@@ -1,0 +1,29 @@
+@keyframes presents-animation {
+    from { opacity: 0; } to { opacity: 1; } 
+}
+
+#presents {
+    background-color: black;
+    font-size: 20pt;
+    font-family: monospace;
+    color: white;
+    width: inherit;
+    height: inherit;
+    position: relative;
+    border-radius: inherit;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+}
+
+#presents > div {
+    animation: presents-animation 0.5s linear forwards;
+}
+
+#presents #brand {
+    font-size: 30pt;
+}
